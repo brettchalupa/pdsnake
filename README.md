@@ -4,6 +4,15 @@ Classic game snake for the Playdate console.
 
 Includes high-score tracking, sound effect toggle, and a battery saver mode.
 
+## Get the Game
+
+Download the game at https://brettchalupa.itch.io/pdsnake or from the latest ref at https://git.sr.ht/~bcodes/pdsnake/refs
+
+Upload the game to your Playdate by:
+
+1. Download the game zip
+2. Sideload it onto your Playdate at https://play.date/account/sideload/ or via USB connection
+
 ## Development
 
 Uses Just for commands:
