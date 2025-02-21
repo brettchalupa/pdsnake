@@ -1,4 +1,6 @@
-mainMenu = {}
+scene.mainMenu = {}
+
+local mainMenu <const> = scene.mainMenu
 
 local gfx <const> = playdate.graphics
 
@@ -8,21 +10,16 @@ local fonts <const> = fonts
 local xPad <const> = 24
 local scene <const> = scene
 
-local drawStart = true
-local toggleTimer = playdate.timer.new(600, function()
-	drawStart = not drawStart
-end)
-toggleTimer.repeats = true
-toggleTimer.reverse = true
+local drawStart = nil
+local toggleTimer = nil
 
-local highScore = highScore.read()
+local hs = nil
 
 function mainMenu.update()
 	if playdate.buttonIsPressed(playdate.kButtonA) then
 		sfx.play(sfx.select)
-		resetGame()
 		scene.switchTo(scene.gameplay)
-		toggleTimer:pause()
+		return
 	end
 
 	gfx.clear()
@@ -42,8 +39,8 @@ function mainMenu.update()
 		)
 	end
 
-	if highScore > 0 then
-		gfx.drawText("High-Score: " .. highScore, 240, 26);
+	if hs > 0 then
+		gfx.drawText("High-Score: " .. hs, 240, 26);
 	end
 
 	gfx.drawText(meta.versionAndBuild, xPad, screen.height - 44);
@@ -51,8 +48,18 @@ function mainMenu.update()
 end
 
 function mainMenu.init()
+	print("main menu init")
 	drawStart = true
-	toggleTimer:reset()
-	toggleTimer:start()
-	highScore = highScore.read()
+	toggleTimer = playdate.timer.new(600, function()
+		drawStart = not drawStart
+	end)
+	toggleTimer.repeats = true
+	toggleTimer.reverse = true
+	hs = highScore.read()
+end
+
+function mainMenu.denit()
+	toggleTimer:remove()
+	toggleTimer = nil
+	hs = nil
 end

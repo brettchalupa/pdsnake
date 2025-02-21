@@ -1,16 +1,11 @@
 scene = {
-	mainMenu = "main_menu",
-	gameplay = "gameplay",
 }
 
-scene.current = scene.mainMenu
+import "scenes/main_menu"
+import "scenes/gameplay"
 
-function scene.updateCurrent()
-	if scene.current == scene.mainMenu then
-		mainMenu.update()
-	elseif scene.current == scene.gameplay then
-		updateGameplay()
-	end
+function scene.update()
+	scene.current.update()
 end
 
 function scene.switchTo(targetScene)
@@ -19,9 +14,13 @@ function scene.switchTo(targetScene)
 		return
 	end
 
+	if scene.current and scene.current.denit then
+		scene.current.denit()
+	end
+
 	scene.current = targetScene
 
-	if scene.current == scene.mainMenu then
-		mainMenu.init()
+	if scene.current.init then
+		scene.current.init()
 	end
 end
