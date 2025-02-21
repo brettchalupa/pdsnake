@@ -207,8 +207,6 @@ local function resetGame()
 end
 
 function gameplay.update()
-	print("gameplay update")
-
 	if isGameOver then
 		if playdate.buttonJustPressed(playdate.kButtonA) then
 			sfx.play(sfx.select)
@@ -239,8 +237,6 @@ function gameplay.update()
 	end
 end
 function gameplay.init()
-	print("gameplay init")
-
 	resetSnake()
 
 	movementTimer = playdate.timer.new(snake.movementDelayMS, function()

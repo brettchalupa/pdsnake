@@ -48,7 +48,6 @@ function mainMenu.update()
 end
 
 function mainMenu.init()
-	print("main menu init")
 	drawStart = true
 	toggleTimer = playdate.timer.new(600, function()
 		drawStart = not drawStart
