@@ -12,3 +12,7 @@ release:
 	rm -rf pdsnake-release.pdx
 	pdc -s source pdsnake-release.pdx
 	zip -r pdsnake-release.pdx.zip pdsnake-release.pdx
+
+push:
+	git push origin --tags --all
+	git push gh --tags --all
