@@ -1,6 +1,7 @@
 import "CoreLibs/object"
 import "CoreLibs/timer"
 import "CoreLibs/graphics"
+import "CoreLibs/sprites"
 import "store"
 import "fonts"
 import "sfx"

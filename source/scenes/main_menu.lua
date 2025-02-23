@@ -7,11 +7,12 @@ local gfx <const> = playdate.graphics
 local meta <const> = meta
 local sfx <const> = sfx
 local fonts <const> = fonts
-local xPad <const> = 24
+local xPad <const> = 12
 local scene <const> = scene
 
 local drawStart = nil
 local toggleTimer = nil
+local snakeSprite = nil
 
 local hs = nil
 
@@ -23,10 +24,11 @@ function mainMenu.update()
 	end
 
 	gfx.clear()
+	gfx.sprite.update()
 
 	gfx.setFont(fonts.medium)
 
-	gfx.drawText(meta.name, xPad, 20);
+	gfx.drawText(meta.name, xPad + 30, 10);
 
 	gfx.setFont(fonts.small)
 
@@ -40,11 +42,11 @@ function mainMenu.update()
 	end
 
 	if hs > 0 then
-		gfx.drawText("High-Score: " .. hs, 240, 26);
+		gfx.drawText("High-Score: " .. hs, 240, 16);
 	end
 
-	gfx.drawText(meta.versionAndBuild, xPad, screen.height - 44);
-	gfx.drawText("by " .. meta.author, screen.width - 164, screen.height - 44);
+	gfx.drawText(meta.versionAndBuild, xPad, screen.height - 34);
+	gfx.drawText("by " .. meta.author, screen.width - 156, screen.height - 34);
 end
 
 function mainMenu.init()
@@ -55,10 +57,17 @@ function mainMenu.init()
 	toggleTimer.repeats = true
 	toggleTimer.reverse = true
 	hs = highScore.read()
+
+	local spriteImage = gfx.image.new("sprites/snake.png")
+	assert(spriteImage)
+	snakeSprite = gfx.sprite.new(spriteImage)
+	snakeSprite:moveTo(xPad + 10, 24)
+	snakeSprite:add()
 end
 
 function mainMenu.denit()
 	toggleTimer:remove()
 	toggleTimer = nil
 	hs = nil
+	snakeSprite = nil
 end
