@@ -13,6 +13,13 @@ Upload the game to your Playdate by:
 1. Download the game zip
 2. Sideload it onto your Playdate at https://play.date/account/sideload/ or via USB connection
 
+## Credits
+
+- Game programmed by Brett Chalupa
+- Color snake and apple icons come from [OpenMoji](https://openmoji.org/)
+- Pixel snake on the game's card and icon comes from the NEC emoji set from 1990
+- Sound effects made with [jsfxr](https://sfxr.me/)
+
 ## Development
 
 Uses Just for commands:
