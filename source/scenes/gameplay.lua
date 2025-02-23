@@ -236,7 +236,12 @@ function gameplay.update()
 		)
 
 		if apple.gridX > 2 or apple.gridY > 1 then
-			gfx.drawText("Score: " .. numParts(), 4, 4)
+			local parts = numParts()
+			local scoreTxt = "Score: " .. parts
+			if parts > cachedHighScore then
+				scoreTxt = scoreTxt .. " !"
+			end
+			gfx.drawText(scoreTxt, 4, 4)
 		end
 	end
 end
