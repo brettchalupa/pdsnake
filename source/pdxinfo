@@ -4,3 +4,4 @@ description=Eat apples. Grow long. Avoid yourself.
 bundleID=com.brettmakesgames.pdsnake
 version=0.3.0-dev
 buildNumber=3
+imagePath=meta/
