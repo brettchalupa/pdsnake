@@ -234,6 +234,7 @@ function gameplay.update()
 			apple.gridY * gridSize + gridSize / 2,
 			gridSize / 2 - 2
 		)
+		gfx.drawText("Score: " .. numParts(), 4, 4)
 	end
 end
 function gameplay.init()
