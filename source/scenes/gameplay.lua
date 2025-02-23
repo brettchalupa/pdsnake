@@ -234,7 +234,10 @@ function gameplay.update()
 			apple.gridY * gridSize + gridSize / 2,
 			gridSize / 2 - 2
 		)
-		gfx.drawText("Score: " .. numParts(), 4, 4)
+
+		if apple.gridX > 2 or apple.gridY > 1 then
+			gfx.drawText("Score: " .. numParts(), 4, 4)
+		end
 	end
 end
 function gameplay.init()
