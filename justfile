@@ -14,5 +14,7 @@ release:
 	zip -r pdsnake-release.pdx.zip pdsnake-release.pdx
 
 push:
-	git push origin --tags --all
-	git push gh --tags --all
+	git push origin --all
+	git push origin --tags
+	git push gh --all
+	git push gh --tags
