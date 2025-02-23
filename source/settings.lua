@@ -1,6 +1,7 @@
 settings = {
 	playSfx = true, -- default
-	batterySaver = false -- default
+	batterySaver = false, -- default
+	darkMode = false, -- default
 }
 
 function settings.load()
@@ -14,9 +15,14 @@ function settings.load()
 		if save.batterySaver ~= nil then
 			settings.batterySaver = save.batterySaver
 		end
+
+		if save.darkMode ~= nil then
+			settings.darkMode = save.darkMode
+		end
 	end
 
 	settings.setFrameRate()
+	settings.setColorMode()
 
 	return settings
 end
@@ -24,7 +30,8 @@ end
 function settings.save()
 	store.mergeAndWrite({
 		playSfx = settings.playSfx,
-		batterySaver = settings.batterySaver
+		batterySaver = settings.batterySaver,
+		darkMode = settings.darkMode,
 	})
 end
 
@@ -45,4 +52,15 @@ function settings.setFrameRate()
 	else
 		playdate.display.setRefreshRate(50)
 	end
+end
+
+function settings.toggleDarkMode()
+	settings.darkMode = not settings.darkMode
+	settings.save()
+	settings.setColorMode()
+end
+
+
+function settings.setColorMode()
+	playdate.display.setInverted(settings.darkMode)
 end

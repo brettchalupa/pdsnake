@@ -18,11 +18,8 @@ function init()
 	settings.load()
 
 	local menu = playdate.getSystemMenu()
-	menu:addMenuItem("reset score", function()
-		highScore.write(0)
-		scene.switchTo(scene.mainMenu)
-	end)
 	menu:addCheckmarkMenuItem("play sfx", settings.playSfx, settings.toggleSfx)
+	menu:addCheckmarkMenuItem("dark mode", settings.darkMode, settings.toggleDarkMode)
 	menu:addCheckmarkMenuItem("batt. saver", settings.batterySaver, settings.toggleBatterySaver)
 	scene.switchTo(scene.mainMenu)
 end
