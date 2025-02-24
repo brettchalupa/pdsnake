@@ -1,5 +1,4 @@
 import "CoreLibs/graphics"
-import "high_score"
 
 scene.gameplay = {}
 
@@ -24,7 +23,7 @@ end
 local function setNewHighScore(score)
 	newHighScore = true
 	cachedHighScore = score
-	highScore.write(score)
+	stats.setHighScore(score)
 end
 
 local function endGame()
@@ -34,13 +33,17 @@ local function endGame()
 
 	local numParts = numParts()
 
-	local saveScore = highScore.read()
+	local saveScore = stats.highScore
 
 	if numParts > saveScore then
 		setNewHighScore(numParts)
 	else
 		cachedHighScore = saveScore
 	end
+
+	stats.logPlay()
+	stats.addApples(numParts)
+	stats.save()
 end
 
 local function resetSnake()
@@ -199,7 +202,7 @@ end
 
 local function resetGame()
 	newHighScore = false
-	cachedHighScore = highScore.read()
+	cachedHighScore = stats.highScore
 	isGameOver = false
 	resetSnake()
 	spawnApple()

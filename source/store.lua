@@ -3,7 +3,14 @@ local pdstore <const> = playdate.datastore
 store = {}
 
 function store.read()
-	return pdstore.read()
+	local data = pdstore.read()
+
+	if meta.isDebug then
+		print("SAVE DATA")
+		printTable(data)
+	end
+
+	return data
 end
 
 function store.write(data)

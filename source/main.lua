@@ -8,14 +8,16 @@ import "settings"
 import "screen"
 import "meta"
 import "scene"
-import "high_score"
+import "stats"
 
 local settings <const> = settings
+local stats <const> = stats
 local scene <const> = scene
 local meta <const> = meta
 
 function init()
 	settings.load()
+	stats.load()
 
 	local menu = playdate.getSystemMenu()
 	menu:addCheckmarkMenuItem("play sfx", settings.playSfx, settings.toggleSfx)
@@ -32,6 +34,11 @@ function playdate.update()
 	if meta.isDebug then
 		playdate.drawFPS(screen.width - 24, 12)
 	end
+end
+
+function playdate.gameWillTerminate()
+	stats.addTimePlayed(playdate.getCurrentTimeMilliseconds())
+	stats.save()
 end
 
 init()

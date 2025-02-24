@@ -56,7 +56,8 @@ function mainMenu.init()
 	end)
 	toggleTimer.repeats = true
 	toggleTimer.reverse = true
-	hs = highScore.read()
+	stats.load()
+	hs = stats.highScore
 
 	snakeImage = gfx.image.new("sprites/snake.png")
 	assert(snakeImage)
