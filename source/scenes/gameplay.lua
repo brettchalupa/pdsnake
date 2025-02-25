@@ -99,22 +99,22 @@ local function spawnApple()
 end
 
 local function updateSnake()
-	if playdate.buttonIsPressed(playdate.kButtonLeft) then
+	if playdate.buttonJustPressed(playdate.kButtonLeft) then
 		if snake.direction ~= "right" then
 			snake.inputDirection = "left"
 		end
 	end
-	if playdate.buttonIsPressed(playdate.kButtonRight) then
+	if playdate.buttonJustPressed(playdate.kButtonRight) then
 		if snake.direction ~= "left" then
 			snake.inputDirection = "right"
 		end
 	end
-	if playdate.buttonIsPressed(playdate.kButtonUp) then
+	if playdate.buttonJustPressed(playdate.kButtonUp) then
 		if snake.direction ~= "down" then
 			snake.inputDirection = "up"
 		end
 	end
-	if playdate.buttonIsPressed(playdate.kButtonDown) then
+	if playdate.buttonJustPressed(playdate.kButtonDown) then
 		if snake.direction ~= "up" then
 			snake.inputDirection = "down"
 		end
