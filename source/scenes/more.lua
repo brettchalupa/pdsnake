@@ -10,7 +10,13 @@ function more.update()
 		scene.switchTo(scene.mainMenu)
 		return
 	end
+end
 
+function more.init()
+	more.draw()
+end
+
+function more.draw()
 	gfx.clear()
 
 	gfx.setFont(fonts.medium)
@@ -18,9 +24,10 @@ function more.update()
 	gfx.drawText("More", layout.xPad, 10);
 
 	gfx.setFont(fonts.small)
-end
 
-function more.init()
+	gfx.drawText("Find more of my games at\nbrettchalupa.itch.io", layout.xPad, 60)
+
+	gfx.drawText("(B) ack", layout.xPad, 188)
 end
 
 function more.denit()
