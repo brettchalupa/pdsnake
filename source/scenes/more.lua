@@ -2,8 +2,7 @@ scene.more = {}
 
 local more <const> = scene.more
 local gfx <const> = playdate.graphics
--- TODO: refactor into layout module
-local xPad <const> = 12
+local layout <const> = layout
 
 function more.update()
 	if playdate.buttonIsPressed(playdate.kButtonB) then
@@ -16,7 +15,7 @@ function more.update()
 
 	gfx.setFont(fonts.medium)
 
-	gfx.drawText("More", xPad, 10);
+	gfx.drawText("More", layout.xPad, 10);
 
 	gfx.setFont(fonts.small)
 end

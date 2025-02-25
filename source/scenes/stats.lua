@@ -1,7 +1,6 @@
 scene.stats = {}
 
--- TODO: refactor into layout module
-local xPad <const> = 12
+local layout <const> = layout
 local stats <const> = scene.stats
 local gfx <const> = playdate.graphics
 
@@ -16,7 +15,7 @@ function stats.update()
 
 	gfx.setFont(fonts.medium)
 
-	gfx.drawText("Stats", xPad, 10);
+	gfx.drawText("Stats", layout.xPad, 10);
 
 	gfx.setFont(fonts.small)
 end

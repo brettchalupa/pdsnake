@@ -7,7 +7,7 @@ local gfx <const> = playdate.graphics
 local meta <const> = meta
 local sfx <const> = sfx
 local fonts <const> = fonts
-local xPad <const> = 12
+local layout <const> = layout
 local scene <const> = scene
 
 local drawStart = nil
@@ -53,16 +53,16 @@ function mainMenu.update()
 	end
 
 	gfx.clear()
-	snakeImage:draw(xPad, 8)
+	snakeImage:draw(layout.xPad, 8)
 
 	gfx.setFont(fonts.medium)
 
-	gfx.drawText(meta.name, xPad + 38, 10);
+	gfx.drawText(meta.name, layout.xPad + 38, 10);
 
 	gfx.setFont(fonts.small)
 
 	for i, option in ipairs(menuOptions) do
-		gfx.drawText(option.title, xPad + 20, menuYPos(i));
+		gfx.drawText(option.title, layout.xPad + 20, menuYPos(i));
 	end
 
 	gfx.fillRect(math.sin(playdate.getCurrentTimeMilliseconds() / 140) + 16, menuYPos(currentOption) + 6, 8, 8, 0)
@@ -71,7 +71,7 @@ function mainMenu.update()
 		gfx.drawText("High-Score: " .. hs, 240, 16);
 	end
 
-	gfx.drawText(meta.versionAndBuild, xPad, screen.height - 34);
+	gfx.drawText(meta.versionAndBuild, layout.xPad, screen.height - 34);
 	gfx.drawText("by " .. meta.author, screen.width - 156, screen.height - 34);
 end
 
