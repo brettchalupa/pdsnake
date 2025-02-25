@@ -29,9 +29,7 @@ function mainMenu.update()
 	if playdate.buttonJustPressed(playdate.kButtonA) then
 		sfx.play(sfx.select)
 		local sceneKey = menuOptions[currentOption].scene
-		print(sceneKey)
 		local selectedScene = scene[sceneKey]
-		print(selectedScene)
 		scene.switchTo(selectedScene)
 		return
 	end
