@@ -8,7 +8,7 @@ function scene.stats.update()
 	if playdate.buttonJustPressed(playdate.kButtonA) and playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.death)
 		stats.reset()
-		scene.stats.drawScene()
+		scene.stats.draw()
 		return
 	end
 
@@ -21,10 +21,10 @@ end
 
 function scene.stats.init()
 	stats.load()
-	scene.stats.drawScene()
+	scene.stats.draw()
 end
 
-function scene.stats.drawScene()
+function scene.stats.draw()
 	gfx.clear()
 
 	gfx.setFont(fonts.medium)
