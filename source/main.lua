@@ -8,8 +8,8 @@ import "layout"
 import "settings"
 import "screen"
 import "meta"
-import "scene"
 import "stats"
+import "scene"
 
 local settings <const> = settings
 local stats <const> = stats

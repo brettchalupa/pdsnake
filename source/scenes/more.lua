@@ -5,7 +5,7 @@ local gfx <const> = playdate.graphics
 local layout <const> = layout
 
 function more.update()
-	if playdate.buttonIsPressed(playdate.kButtonB) then
+	if playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.select)
 		scene.switchTo(scene.mainMenu)
 		return
