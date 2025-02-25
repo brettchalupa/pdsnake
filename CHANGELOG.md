@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.3.0 (4) - 2025-02-25
+
+- Meta card and icon for the app
+- Main menu polish
+- Stat tracking
+- More scene
+
 ## 0.2.0 (2) - 2025-02-22
 
 - Display score during gameplay (! denotes new high-score)
