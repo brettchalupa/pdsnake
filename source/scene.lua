@@ -1,8 +1,10 @@
 scene = {
 }
 
-import "scenes/main_menu"
 import "scenes/gameplay"
+import "scenes/main_menu"
+import "scenes/more"
+import "scenes/stats"
 
 function scene.update()
 	scene.current.update()

@@ -12,7 +12,9 @@ end
 
 sfx.apple = sfx.load("sounds/apple.wav")
 sfx.death = sfx.load("sounds/death.wav")
+sfx.click = sfx.load("sounds/click.wav")
 sfx.select = sfx.apple
 
 sfx.apple:setVolume(0.5)
 sfx.death:setVolume(0.5)
+sfx.click:setVolume(0.5)

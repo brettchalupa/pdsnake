@@ -11,16 +11,45 @@ local xPad <const> = 12
 local scene <const> = scene
 
 local drawStart = nil
-local toggleTimer = nil
 local snakeImage = nil
-
+local currentOption = 1
 local hs = nil
 
+local menuOptions = {
+	{ title = "Play", scene = "gameplay" },
+	{ title = "Stats", scene = "stats" },
+	{ title = "More", scene = "more" },
+}
+
+local function menuYPos(i)
+	return 68 + (i * 24)
+end
+
 function mainMenu.update()
-	if playdate.buttonIsPressed(playdate.kButtonA) then
+	if playdate.buttonJustPressed(playdate.kButtonA) then
 		sfx.play(sfx.select)
-		scene.switchTo(scene.gameplay)
+		local sceneKey = menuOptions[currentOption].scene
+		print(sceneKey)
+		local selectedScene = scene[sceneKey]
+		print(selectedScene)
+		scene.switchTo(selectedScene)
 		return
+	end
+
+	if playdate.buttonJustPressed(playdate.kButtonUp) then
+		sfx.play(sfx.click)
+		currentOption -= 1
+		if currentOption < 1 then
+			currentOption = #menuOptions
+		end
+	end
+
+	if playdate.buttonJustPressed(playdate.kButtonDown) then
+		sfx.play(sfx.click)
+		currentOption += 1
+		if currentOption > #menuOptions then
+			currentOption = 1
+		end
 	end
 
 	gfx.clear()
@@ -32,14 +61,11 @@ function mainMenu.update()
 
 	gfx.setFont(fonts.small)
 
-	if drawStart then
-		gfx.drawText("A   Start", xPad + 4, 120);
-		gfx.drawCircleAtPoint(
-			xPad + 10,
-			130,
-			14
-		)
+	for i, option in ipairs(menuOptions) do
+		gfx.drawText(option.title, xPad + 20, menuYPos(i));
 	end
+
+	gfx.fillRect(math.sin(playdate.getCurrentTimeMilliseconds() / 140) + 16, menuYPos(currentOption) + 6, 8, 8, 0)
 
 	if hs > 0 then
 		gfx.drawText("High-Score: " .. hs, 240, 16);
@@ -51,11 +77,6 @@ end
 
 function mainMenu.init()
 	drawStart = true
-	toggleTimer = playdate.timer.new(600, function()
-		drawStart = not drawStart
-	end)
-	toggleTimer.repeats = true
-	toggleTimer.reverse = true
 	stats.load()
 	hs = stats.highScore
 
@@ -64,8 +85,6 @@ function mainMenu.init()
 end
 
 function mainMenu.denit()
-	toggleTimer:remove()
-	toggleTimer = nil
 	hs = nil
 	snakeImage = nil
 end
