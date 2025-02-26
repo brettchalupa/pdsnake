@@ -1,8 +1,8 @@
 import "CoreLibs/graphics"
 
-scene.gameplay = {}
+scenes.gameplay = {}
 
-local gameplay <const> = scene.gameplay
+local gameplay <const> = scenes.gameplay
 local gfx <const> = playdate.graphics
 local fonts <const> = fonts
 local gridSize <const> = 20
@@ -43,8 +43,8 @@ local function endGame()
 	stats.addApples(numParts)
 	stats.save()
 
-	scene.gameover.setScore(numParts, cachedHighScore, isNewHigh)
-	scene.switchTo(scene.gameover)
+	scenes.gameover.setScore(numParts, cachedHighScore, isNewHigh)
+	scenes.switchTo(scenes.gameover)
 end
 
 local function resetSnake()

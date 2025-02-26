@@ -1,30 +1,30 @@
-scene.stats = {}
+scenes.stats = {}
 
 local layout <const> = layout
 local stats <const> = stats
 local gfx <const> = playdate.graphics
 
-function scene.stats.update()
+function scenes.stats.update()
 	if playdate.buttonJustPressed(playdate.kButtonA) and playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.death)
 		stats.reset()
-		scene.stats.draw()
+		scenes.stats.draw()
 		return
 	end
 
 	if playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.select)
-		scene.switchTo(scene.mainMenu)
+		scenes.switchTo(scenes.mainMenu)
 		return
 	end
 end
 
-function scene.stats.init()
+function scenes.stats.init()
 	stats.load()
-	scene.stats.draw()
+	scenes.stats.draw()
 end
 
-function scene.stats.draw()
+function scenes.stats.draw()
 	gfx.clear()
 
 	gfx.setFont(fonts.medium)
@@ -47,5 +47,5 @@ function scene.stats.draw()
 	gfx.drawText("ack", layout.xPad + 29, 202)
 end
 
-function scene.stats.denit()
+function scenes.stats.denit()
 end

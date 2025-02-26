@@ -1,6 +1,6 @@
-scene.gameover = {}
+scenes.gameover = {}
 
-local gameover <const> = scene.gameover
+local gameover <const> = scenes.gameover
 local gfx <const> = playdate.graphics
 local fonts <const> = fonts
 
@@ -40,13 +40,13 @@ end
 function gameover.update()
 	if playdate.buttonJustPressed(playdate.kButtonA) then
 		sfx.play(sfx.select)
-		scene.switchTo(scene.gameplay)
+		scenes.switchTo(scenes.gameplay)
 		return
 	end
 
 	if playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.select)
-		scene.switchTo(scene.mainMenu)
+		scenes.switchTo(scenes.mainMenu)
 		return
 	end
 

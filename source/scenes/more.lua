@@ -1,6 +1,6 @@
-scene.more = {}
+scenes.more = {}
 
-local more <const> = scene.more
+local more <const> = scenes.more
 local gfx <const> = playdate.graphics
 local layout <const> = layout
 local qrCode = nil
@@ -8,7 +8,7 @@ local qrCode = nil
 function more.update()
 	if playdate.buttonJustPressed(playdate.kButtonB) then
 		sfx.play(sfx.select)
-		scene.switchTo(scene.mainMenu)
+		scenes.switchTo(scenes.mainMenu)
 		return
 	end
 end

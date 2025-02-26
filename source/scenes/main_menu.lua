@@ -1,6 +1,6 @@
-scene.mainMenu = {}
+scenes.mainMenu = {}
 
-local mainMenu <const> = scene.mainMenu
+local mainMenu <const> = scenes.mainMenu
 
 local gfx <const> = playdate.graphics
 
@@ -8,7 +8,7 @@ local meta <const> = meta
 local sfx <const> = sfx
 local fonts <const> = fonts
 local layout <const> = layout
-local scene <const> = scene
+local scenes <const> = scenes
 
 local drawStart = nil
 local snakeImage = nil
@@ -29,8 +29,8 @@ function mainMenu.update()
 	if playdate.buttonJustPressed(playdate.kButtonA) then
 		sfx.play(sfx.select)
 		local sceneKey = menuOptions[currentOption].scene
-		local selectedScene = scene[sceneKey]
-		scene.switchTo(selectedScene)
+		local selectedScene = scenes[sceneKey]
+		scenes.switchTo(selectedScene)
 		return
 	end
 
