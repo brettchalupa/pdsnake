@@ -224,6 +224,7 @@ function gameplay.update()
 		gfx.drawText(scoreTxt, 4, 4)
 	end
 end
+
 function gameplay.init()
 	resetSnake()
 
@@ -240,4 +241,24 @@ function gameplay.init()
 	}
 
 	resetGame()
+end
+
+function playdate.gameWillPause()
+	if scenes.current == scenes.gameplay then
+		local menuImage = gfx.image.new(400, 240)
+		gfx.pushContext(menuImage)
+		playdate.graphics.setColor(playdate.graphics.kColorWhite)
+		gfx.fillRect(0, 0, menuImage:getSize())
+		local snake = gfx.image.new("sprites/snake.png")
+		snake:draw(layout.xPad, 20)
+		gfx.setFont(fonts.small)
+		gfx.drawText("Current Score: " .. numParts(), layout.xPad, 60)
+		gfx.drawText("High-Score: " .. cachedHighScore, layout.xPad, 88)
+		gfx.popContext()
+		playdate.setMenuImage(menuImage)
+	end
+end
+
+function playdate.gameWillResume()
+		playdate.setMenuImage(nil)
 end
