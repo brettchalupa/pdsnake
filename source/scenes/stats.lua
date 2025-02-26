@@ -38,8 +38,13 @@ function scene.stats.draw()
 	gfx.drawText("Plays: " .. stats.plays, layout.xPad, 88)
 	gfx.drawText("Apples Eaten: " .. stats.applesEaten, layout.xPad, 116)
 
-	gfx.drawText("(A) + (B) to reset stats", layout.xPad, 160)
-	gfx.drawText("(B) ack", layout.xPad, 188)
+	icons.drawAButton(layout.xPad, 160)
+	gfx.drawText("+", layout.xPad + 32, 162)
+	icons.drawBButton(layout.xPad + 48, 160)
+	gfx.drawText("to reset stats", layout.xPad + 82, 162)
+
+	icons.drawBButton(layout.xPad, 200)
+	gfx.drawText("ack", layout.xPad + 29, 202)
 end
 
 function scene.stats.denit()

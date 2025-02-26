@@ -18,3 +18,5 @@ push:
 	git push origin --tags
 	git push gh --all
 	git push gh --tags
+	git push srht --all
+	git push srht --tags
