@@ -44,3 +44,24 @@ function playdate.gameWillTerminate()
 end
 
 init()
+
+function playdate.serialMessageReceived(message)
+	if not meta.isDebug then
+		return
+	end
+
+	print("Received message: " .. message)
+
+	if string.find(message, "scene:") == 1 then
+		local scene = string.sub(message, 7)
+		print("Switching to " .. scene .. " from serialMessageReceived")
+		local newScene = scenes[scene]
+
+		if newScene == nil then
+			print("Scene " .. scene .. " does not exist")
+			return
+		end
+
+		scenes.switchTo(newScene)
+	end
+end

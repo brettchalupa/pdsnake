@@ -4,8 +4,8 @@ local gameover <const> = scenes.gameover
 local gfx <const> = playdate.graphics
 local fonts <const> = fonts
 
-local score = nil
-local highScore = nil
+local score = 0
+local highScore = 0
 local isNewHigh = false
 
 function gameover.setScore(_score, _highScore, _isNewHigh)
@@ -18,8 +18,9 @@ function gameover.init()
 end
 
 function gameover.denit()
-	score = nil
-	highScore = false
+	score = 0
+	highScore = 0
+	isNewHigh = false
 end
 
 local function drawGameOver()
