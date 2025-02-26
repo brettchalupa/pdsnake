@@ -1,5 +1,7 @@
 # PDSnake
 
+![PDSnake Playdate Cover image](./source/meta/card.png)
+
 Classic game snake for the Playdate console.
 
 Includes high-score tracking, sound effect toggle, and a battery saver mode.
