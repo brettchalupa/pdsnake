@@ -69,8 +69,7 @@ function mainMenu.update()
 		gfx.drawText("High-Score: " .. hs, 240, 16);
 	end
 
-	gfx.drawText(meta.versionAndBuild, layout.xPad, screen.height - 34);
-	gfx.drawText("by " .. meta.author, screen.width - 156, screen.height - 34);
+	gfx.drawText("by " .. meta.author, layout.xPad, screen.height - 34);
 end
 
 function mainMenu.init()

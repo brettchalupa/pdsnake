@@ -36,6 +36,7 @@ function more.draw()
 	gfx.drawText("PDSnake is dedicated to the public domain.", layout.xPad, 160)
 
 	gfx.drawText("(B) ack", layout.xPad, 200)
+	gfx.drawText(meta.versionAndBuild, screen.width - 130, 200);
 end
 
 function more.denit()
