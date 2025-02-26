@@ -2,6 +2,7 @@ scene = {
 }
 
 import "scenes/gameplay"
+import "scenes/gameover"
 import "scenes/main_menu"
 import "scenes/more"
 import "scenes/stats"

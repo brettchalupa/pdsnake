@@ -12,8 +12,7 @@ local gridHeight <const> = screen.height / gridSize - 1
 local snake = nil
 local movementTimer = nil
 local apple = nil
-local isGameOver = false
-local newHighScore = false
+local isNewHigh = false
 local cachedHighScore = nil
 
 local function numParts()
@@ -21,13 +20,12 @@ local function numParts()
 end
 
 local function setNewHighScore(score)
-	newHighScore = true
+	isNewHigh = true
 	cachedHighScore = score
 	stats.setHighScore(score)
 end
 
 local function endGame()
-	isGameOver = true
 	sfx.play(sfx.death)
 	movementTimer:pause()
 
@@ -44,6 +42,9 @@ local function endGame()
 	stats.logPlay()
 	stats.addApples(numParts)
 	stats.save()
+
+	scene.gameover.setScore(numParts, cachedHighScore, isNewHigh)
+	scene.switchTo(scene.gameover)
 end
 
 local function resetSnake()
@@ -61,19 +62,6 @@ local function resetMovementTimer()
 	movementTimer.duration = snake.movementDelayMS
 	movementTimer:reset()
 	movementTimer:start()
-end
-
-local function drawGameOver()
-	gfx.setFont(fonts.medium)
-	gfx.drawText("Game Over", 40, 40);
-
-	gfx.setFont(fonts.small)
-	gfx.drawText("Press the A button to play again", 40, 88);
-	gfx.drawText("Your Score: " .. numParts() .. " | High-Score: " .. cachedHighScore, 40, 120);
-
-	if newHighScore then
-		gfx.drawText("New high-score!", 40, 180);
-	end
 end
 
 local function spawnApple()
@@ -201,23 +189,15 @@ local function eatApple()
 end
 
 local function resetGame()
-	newHighScore = false
+	isNewHigh = false
 	cachedHighScore = stats.highScore
-	isGameOver = false
 	resetSnake()
 	spawnApple()
 	resetMovementTimer()
 end
 
 function gameplay.update()
-	if isGameOver then
-		if playdate.buttonJustPressed(playdate.kButtonA) then
-			sfx.play(sfx.select)
-			resetGame()
-		end
-	else
-		updateSnake()
-	end
+	updateSnake()
 
 	if snake.gridX == apple.gridX and snake.gridY == apple.gridY then
 		eatApple()
@@ -225,37 +205,29 @@ function gameplay.update()
 
 	gfx.clear()
 
-	if isGameOver then
-		drawGameOver()
-	else
-		gfx.fillRect(snake.gridX * gridSize, snake.gridY * gridSize, gridSize, gridSize)
-		for _, part in pairs(snake.parts) do
-			gfx.fillRect(part.gridX * gridSize, part.gridY * gridSize, gridSize, gridSize)
-		end
-		gfx.fillCircleAtPoint(
-			apple.gridX * gridSize + gridSize / 2,
-			apple.gridY * gridSize + gridSize / 2,
-			gridSize / 2 - 2
+	gfx.fillRect(snake.gridX * gridSize, snake.gridY * gridSize, gridSize, gridSize)
+	for _, part in pairs(snake.parts) do
+		gfx.fillRect(part.gridX * gridSize, part.gridY * gridSize, gridSize, gridSize)
+	end
+	gfx.fillCircleAtPoint(
+		apple.gridX * gridSize + gridSize / 2,
+		apple.gridY * gridSize + gridSize / 2,
+		gridSize / 2 - 2
 		)
 
-		if apple.gridX > 2 or apple.gridY > 1 then
-			local parts = numParts()
-			local scoreTxt = "Score: " .. parts
-			if parts > cachedHighScore then
-				scoreTxt = scoreTxt .. " !"
-			end
-			gfx.drawText(scoreTxt, 4, 4)
+	if apple.gridX > 2 or apple.gridY > 1 then
+		local parts = numParts()
+		local scoreTxt = "Score: " .. parts
+		if parts > cachedHighScore then
+			scoreTxt = scoreTxt .. " !"
 		end
+		gfx.drawText(scoreTxt, 4, 4)
 	end
 end
 function gameplay.init()
 	resetSnake()
 
 	movementTimer = playdate.timer.new(snake.movementDelayMS, function()
-		if isGameOver then
-			return
-		end
-
 		moveSnake()
 	end)
 
