@@ -1,5 +1,6 @@
 scenes.gameover = {}
 
+local layout <const> = layout
 local gameover <const> = scenes.gameover
 local gfx <const> = playdate.graphics
 local fonts <const> = fonts
@@ -27,15 +28,22 @@ local function drawGameOver()
 	gfx.clear()
 
 	gfx.setFont(fonts.medium)
-	gfx.drawText("Game Over", 40, 40);
+	gfx.drawText("Game Over", layout.xPad, 10);
 
 	gfx.setFont(fonts.small)
-	gfx.drawText("Press the A button to play again", 40, 88);
-	gfx.drawText("Your Score: " .. score .. " | High-Score: " .. highScore, 40, 120);
+	gfx.drawText("Your Score: " .. score, layout.xPad, 60);
 
 	if isNewHigh then
-		gfx.drawText("New high-score!", 40, 180);
+		gfx.drawText("New high-score!", layout.xPad, 88);
+	else
+		gfx.drawText("High-Score: " .. highScore, layout.xPad, 88);
 	end
+
+	icons.drawAButton(layout.xPad, 160)
+	gfx.drawText("Play again", layout.xPad + 32, 162)
+
+	icons.drawBButton(layout.xPad, 200)
+	gfx.drawText("ack to Main Menu", layout.xPad + 29, 202)
 end
 
 function gameover.update()
