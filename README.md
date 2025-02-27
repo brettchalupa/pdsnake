@@ -36,8 +36,8 @@ Uses Just for commands:
 3. Create a release commit
 4. Create a release tag with `git tag -a X.X.X`
 5. Create a release build with `just release`
-6. Push the commits and tag to sourcehut
-7. Attach the build to the sourcehut tag
+6. Push the commits and tag to source hosts
+7. Attach the build to the releases
 8. Upload the build to itch.io
 
 ## License
