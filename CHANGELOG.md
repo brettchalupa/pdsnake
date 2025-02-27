@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1 - 2025-02-27
+
+- Fix crash when launching game without save data present
+
 ## 1.0 - 2025-02-26
 
 - Polish various scene layouts
