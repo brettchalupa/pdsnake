@@ -2,7 +2,7 @@
 
 ## 1.0 - 2025-02-26
 
-- Polish various screne layouts
+- Polish various scene layouts
 - Return to Main Menu from Game Over with (B)
 - Display current score and high-score when Menu is pressed
 
