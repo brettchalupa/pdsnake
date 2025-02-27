@@ -215,7 +215,7 @@ function gameplay.update()
 		gridSize / 2 - 2
 		)
 
-	if apple.gridX > 2 or apple.gridY > 1 then
+	if apple.gridX > 3 or apple.gridY > 1 then
 		local parts = numParts()
 		local scoreTxt = "Score: " .. parts
 		if parts > cachedHighScore then
