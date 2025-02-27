@@ -9,7 +9,7 @@ function stats.load()
 	local save = store.read()
 
 	for k, _ in pairs(stats) do
-		if save[k] ~= nil then
+		if save and save[k] ~= nil then
 			if meta.isDebug then
 				print("stat set from save:" .. k .. " -> " .. save[k])
 			end
