@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2 - 2025-03-05
+
+- Reduce speed increase as snake gets longer
+- Remove "Score: " prefix during gameplay
+
 ## 1.1 - 2025-02-27
 
 - Fix crash when launching game without save data present
