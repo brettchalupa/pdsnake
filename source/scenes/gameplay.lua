@@ -165,23 +165,18 @@ local function eatApple()
 	sfx.play(sfx.apple)
 	table.insert(snake.parts, { gridX = snake.gridX, gridY = snake.gridY })
 
-	if #snake.parts == 5 then
+	if #snake.parts == 10 then
 		snake.movementDelayMS = 90
 		resetMovementTimer()
 	end
 
-	if #snake.parts == 10 then
-		snake.movementDelayMS = 80
-		resetMovementTimer()
-	end
-
 	if #snake.parts == 20 then
-		snake.movementDelayMS = 60
+		snake.movementDelayMS = 85
 		resetMovementTimer()
 	end
 
 	if #snake.parts == 30 then
-		snake.movementDelayMS = 50
+		snake.movementDelayMS = 80
 		resetMovementTimer()
 	end
 
