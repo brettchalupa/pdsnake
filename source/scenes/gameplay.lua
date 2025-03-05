@@ -215,13 +215,13 @@ function gameplay.update()
 		gridSize / 2 - 2
 		)
 
-	if apple.gridX > 3 or apple.gridY > 1 then
+	if apple.gridX > 1 or apple.gridY > 1 then
 		local parts = numParts()
-		local scoreTxt = "Score: " .. parts
+		local scoreTxt = parts
 		if parts > cachedHighScore then
 			scoreTxt = scoreTxt .. " !"
 		end
-		gfx.drawText(scoreTxt, 4, 4)
+		gfx.drawText(scoreTxt, 6, 4)
 	end
 end
 
